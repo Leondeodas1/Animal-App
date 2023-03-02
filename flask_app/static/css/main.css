@@ -1,0 +1,65 @@
+* {
+    padding:0;
+    margin:0 
+
+}
+
+
+@font-face {
+    font-family: "pacifico";
+    src: url("Pacifico-Regular.ttf");
+}
+@font-face {
+    font-family: "smooth";
+    src:url("typefaces/EBGaramond-Bold.ttf")
+}
+
+@font-face {
+    font-family: "legible";
+    src: url("Satisfy-Regular.ttf");
+}
+body{
+    height: 100%;
+    background-image:url(https://wallpapercrafter.com/th800/148106-digital-digital-art-artwork-landscape-Sun-sun-rays-sunset-dusk-dark-evening-water-sea-relfection-trees-palm-trees-neon-neon-lights-mountains-minimalism-vaporwave-Retro.jpg)
+} 
+
+
+.container{
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: cornsilk;
+    box-shadow: 5px 5px 5px black;
+    margin: auto;
+    padding: 30px;
+    width: 50%;
+} 
+
+.container{
+    margin-top: 50px;
+}
+
+.top{
+    font-family: "pacifico";
+    display:flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+
+}
+form{
+    color: grey;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.box2 {
+    /* style="border-radius: 5%; width: 350px; border-style: solid; padding: 10px; margin: 10px; height: 300px;" */
+    border-radius: 5px;
+    width:fit-content;
+    border-style:solid;
+    padding: 5px;
+    margin-left:30px;
+    height:fit-content;
+}
