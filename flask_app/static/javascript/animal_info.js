@@ -1,29 +1,24 @@
-var currentSearch = "";
+const canvas = document.getElementById('canvas1');
+const ctx = canvas.getContext('2d');
+console.log(ctx);
 
-function search(element){
-    // console.log(element.value);
-    currentSearch = element.value;
-    console.log(currentSearch)
-}
+const CANVAS_WIDTH = canvas.width= 600;
+const CANVAS_HEIGHT = canvas.height = 600;
 
+const playerIMAGE = new Image()
+playerIMAGE.src = 'static/images/shadow_dog.png'
+const spriteWidth = 575;
+const spriteHeight = 523;
+let frameX = 0;
+let frameY = 6;
 
+function animate(){
+  ctx.clearRect(0, 0, CANVAS_HEIGHT,CANVAS_WIDTH);
+  // ctx.fillRect(50,50,100,100);
+  ctx.drawImage(playerIMAGE, frameX* spriteWidth, frameY* spriteHeight,spriteWidth,spriteHeight,0,0,spriteWidth,spriteHeight);
+  if (frameX <6)frameX++;
+  else frameX = 0;
+  requestAnimationFrame(animate)
+};
 
-
-
-
-
-
-
-
-
-
-
-async function show() {
-    var response = await fetch("https://api.api-ninjas.com/v1/animals?name=" + currentSearch + "/X-Api-Key=hFMh4udT9OaftkdG45PWuw==FsI9IWBQVHHxngSK");
-    var coderData = await response.json(); 
-    console.log(coderData)
-    // thisis.innerHTML = makecodercard(coderData.current);
-    // getid.innerHTML = forecastcard(coderData.forecast.forecastday[0]);
-    // airquaity.innerHTML = airqua(coderData.current);
-    // week.innerHTML = stevendayweathers(coderData.forecast.forecastday);
-}
+// animate();

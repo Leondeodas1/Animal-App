@@ -7,8 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/main.css')}}"> 
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}"> 
-    <title>Animal Farm</title>
+    <title>dinasour</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg " style="background-color: cornsilk;">
@@ -45,22 +44,54 @@
             </form>
           </div>
         </div>
-      </nav> 
-      <div style="display: flex; justify-content: space-evenly;">
-        <div style="width: 25%;">
-          <form action="/get_search" method="get">
-            <div style="width: 100%; display: flex; justify-content: space-between; background-color: cornsilk;margin: 10px;">
-                <div class="mb-3">
-                    <label for="search_animal" class="form-label" >Search Animal</label>
-                    <input type="text" class="form-control" name="search_animal" >
-                </div> 
-                <button  class="btn btn-primary">Submit</button>
-            </div>
-          </form>
-        </div>
-          <canvas id="canvas1"></canvas>
+      </nav>
+      <div>
+        <table class="table">
+            <thead>
+                <tr style="color: cornsilk;">
+                    <th>Dino_name</th>
+                    <th>length</th>
+                    <th>when it lived</th>
+                    <th>Description</th>
+                    <th>Picture</th>
+                </tr>
+            </thead>
+            <tbody>{%for x in dinopower%}
+                <tr style="color:cornsilk;">
+                    <td>{{x.dino_name}}</td>
+                    <td>{{x.length}}</td>
+                    <td>{{x.When_it_lived}}</td>
+                    <td >{{x.Description}}</td>
+                    <td><img src="{{x.img_link}}" alt="{{x.img_link}}" style="height:100px; width: 100px;"></td>
+                </tr>{%endfor%}
+            </tbody>
+        </table>
       </div>
-
-    <script type="text/javascript" src="{{ url_for('static', filename='javascript/animal_info.js') }}"></script>
+      <form action="/add_dinosaur" method="post">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red;">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+            <div class="mb-3">
+                <label for="dino_name" class="form-label">dino_name</label>
+                <input type="text" class="form-control" name="dino_name" >
+            </div>
+            <div class="mb-3">
+                <label for="length" class="form-label">length</label>
+                <input type="number" class="form-control" name="length" >
+            </div>
+            <div class="mb-3">
+                <label for="when_it_lived" class="form-label">when_it_lived</label>
+                <input type="text" class="form-control" name="when_it_lived">
+            </div>
+            <div class="mb-3">
+                <label for="Description" class="form-label">Description</label>
+                <input type="text" class="form-control" name="Description" >
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
 </body>
 </html>
